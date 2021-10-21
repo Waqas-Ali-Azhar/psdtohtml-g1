@@ -10,13 +10,27 @@ My First Web Page
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	
 <link rel="stylesheet"	href="assets/css/style.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
   
   var x = 10;
   var y = 11;
   var total =  x + y;
 
-  alert('Total Value of x and y is ' + total);
+  // alert('Total Value of x and y is ' + total);
+
+
+  $(window).load(function () {
+    $(".trigger_popup_fricc").click(function(){
+       $('.hover_bkgr_fricc').show();
+    });
+    $('.hover_bkgr_fricc').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
+    $('.popupCloseButton').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
+  });
 
 </script>
 </head>
@@ -98,7 +112,7 @@ My First Web Page
 		
 		<h1 class="banner-heading">VR's Surprising Benefits</h1>
 		
-		<p class="benefit-description">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+		<p class="benefit-description">Sample text. sbfjasd Click to select the text box. Click again or double click to start editing the text.</p>
 		
 		
 		<div class="grid-wrapper">
@@ -126,11 +140,13 @@ My First Web Page
 						
 						</div>
 					
+        <span class="totalCh">Count: <span class="number">0</span></span>      
 				<h3>MENTAL HEALTH</h3>
 				
-				<p >Sample text. Click to select the text box. Click again or double click to start editing the text. Excepteur sint occaecat cupidatat non proident.</p>
+				<p class="ttext" >Sample text. Click to select the text box. Click again or double click to start editing the text. Excepteur sint occaecat cupidatat non proident.</p>
 				
 				<a class="btn">more</a>
+        <a class="btn cal" onclick="countCharacters(event);">Calculate Characters</a>
 				
 			</div>
 				
@@ -156,11 +172,13 @@ My First Web Page
 						
 						</div>
 					
+        <span class="totalCh">Count: <span class="number">0</span></span>      
 				<h3>MENTAL HEALTH</h3>
 				
-				<p>Sample text. Click to select the text box. Click again or double click to start editing the text. Excepteur sint occaecat cupidatat non proident.</p>
+				<p class="ttext">Sample text. Click to  nnfkjdsnfk select the text box. Click again or double click to start editing the text. Excepteur sint occaecat cupidatat non proident.</p>
 				
 				<a class="btn">more</a>
+        <a class="btn cal" onclick="countCharacters(event);">Calculate Characters</a>
 				
 			</div>
 				
@@ -185,12 +203,16 @@ My First Web Page
 						</div>
 						
 						</div>
+
+        <span class="totalCh">Count: <span class="number">0</span></span>    
 					
 				<h3>MENTAL HEALTH</h3>
 				
-				<p>Sample text. Click to select the text box. Click again or double click to start editing the text. Excepteur sint occaecat cupidatat non proident.</p>
+				<p class="ttext">Sample text. Click to select the text box. Click again or double click to start editing the  bkjsbfkjskd text. Excepteur sint occaecat cupidatat non proident.</p>
 				
 				<a class="btn">more</a>
+
+        <a class="btn cal" onclick="countCharacters(event);">Calculate Characters</a>
 				
 			</div>
 				
@@ -225,9 +247,86 @@ My First Web Page
 <p style="color:white;">Paragraph Added, for checking modification in git.</p>
 
 
+<a class="trigger_popup_fricc">Click here to show the popup</a>
+
+<div class="hover_bkgr_fricc">
+    <span class="helper"></span>
+    <div>
+        <div class="popupCloseButton">&times;</div>
+        <p>Add any HTML content<br />inside the popup box!</p>
+    </div>
+</div>
+
+
+
 <script type="text/javascript">
-  alert('This alert is being shown from body script');
+  
+  // console.log(1);
+  // console.log(2);
+  // console.log(3);
+  // console.log(4);
+  // console.log(5);
+  // 
+  var Mats = [100,200,300,400,500];
+
+  var English = [110,120,130,150,190];
+
+  var total = 10;
+
+  
+  // function definition
+  function printMyName(){
+
+    alert('waqas');
+
+  }
+
+
+  //function call
+  //printMyName();
+
+  
+
+  for(var i=0; i<5;){
+    console.log('w');
+    console.log(i); 
+    ++i;
+  }
+
+
+
+  for(var i=0; i<5 ; ++i){
+
+    console.log('Total Marks for Student '+ (i+1) + ' are '+ (Mats[i] + English[i]) );
+    
+  }
+
+  // console.log(total);
+  
+
+  //document.getElementById("benefits").innerHTML = "<div>Benefits html changed</div>";
+    
+
+  function countCharacters(event){
+
+    console.log(event);
+
+    // console.log(document.getElementById("shortcut").innerText.length);
+
+    if(event){
+      var charCount = event.target.parentElement.children[3].innerText.length
+      event.target.parentElement.children[1].children[0].innerText = charCount;  
+    }
+
+    
+    // document.getElementsByClassName("number")[0].innerText = charCount;
+
+  }
+
+
 </script>
+
+
 </body>
 
 </html>
