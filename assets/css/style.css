@@ -453,6 +453,15 @@ span.totalCh .number{
 
 }
 
+  .example p:nth-child(even){
+    color: white;
+  }
+
+
+  .example p:nth-child(odd){
+    color: blue;
+  }
+
 
 
 
