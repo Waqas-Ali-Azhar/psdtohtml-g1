@@ -14,29 +14,109 @@
   <div class="board">
 
 
-    <div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+    <span><span class="turn">*</span>Player 1</span>
+
+
+    <div class="row">
+    <div class="cell">&nsbp;</div>
+    <div class="cell">&nsbp;</div>
+    <div class="cell">&nsbp;</div>
     </div>
 
-    <div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+    <div class="row">
+    <div class="cell">&nsbp;</div>
+    <div class="cell">&nsbp;</div>
+    <div class="cell">&nsbp;</div>
     </div>
 
-    <div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+    <div class="row">
+    <div class="cell">&nsbp;</div>
+    <div class="cell">&nsbp;</div>
+    <div class="cell">&nsbp;</div>
     </div>
+
+    <span><span class="turn">*</span>Player 2</span>
 
     
 
     
 
   </div>
+
+
+  <script type="text/javascript">
+    
+
+    var color = 'red';
+    var player = 1;
+
+
+    changeTurn(player);
+
+    function changeTurn(player){
+
+      if(player == 1){
+      var ele1 = document.getElementsByClassName("turn")[0];
+      var ele2 = document.getElementsByClassName("turn")[1];
+
+      }
+      else{
+
+        var ele1 = document.getElementsByClassName("turn")[1];
+        var ele2 = document.getElementsByClassName("turn")[0];
+      }
+
+      ele2.style.display = 'none';
+      ele1.style.display = 'block';
+
+    }
+
+    
+
+    
+
+    
+
+
+    var cells = document.getElementsByClassName("cell");
+    for(var i=0; i<cells.length;++i){
+      cells[i].onclick = function ColorThisCell(event){
+
+          if(event){
+            event.target.style.backgroundColor = color;
+            if(color == 'red'){
+                color = 'black';
+                player = 2;
+            }
+            else{
+                color = 'red';
+                player = 1;
+            }
+              
+            
+            checkWinner();
+            changeTurn(player);
+          }
+        }
+    }
+
+    function checkWinner(){
+
+
+      var win = checkHorizontals();
+      if(win){
+        alert('player won');
+      }
+      var win = checkVerticals();
+
+
+
+    }
+
+
+
+
+  </script>
 
 </body>
 </html>

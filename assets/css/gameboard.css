@@ -1,5 +1,6 @@
 body{
   background: orange;
+  padding-top: 150px;
 }
 
 
@@ -16,4 +17,8 @@ body{
   height: 100px;
   border: 1px solid white;
   display: inline-block;
+}
+
+span.turn{
+  display: none;
 }
