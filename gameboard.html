@@ -18,21 +18,21 @@
 
 
     <div class="row">
-    <div class="cell">&nsbp;</div>
-    <div class="cell">&nsbp;</div>
-    <div class="cell">&nsbp;</div>
+    <div class="cell" data="1">&nsbp;</div>
+    <div class="cell" data="2">&nsbp;</div>
+    <div class="cell" data="3">&nsbp;</div>
     </div>
 
     <div class="row">
-    <div class="cell">&nsbp;</div>
-    <div class="cell">&nsbp;</div>
-    <div class="cell">&nsbp;</div>
+    <div class="cell" data="1">&nsbp;</div>
+    <div class="cell" data="2">&nsbp;</div>
+    <div class="cell" data="3">&nsbp;</div>
     </div>
 
     <div class="row">
-    <div class="cell">&nsbp;</div>
-    <div class="cell">&nsbp;</div>
-    <div class="cell">&nsbp;</div>
+    <div class="cell" data="1">&nsbp;</div>
+    <div class="cell" data="2">&nsbp;</div>
+    <div class="cell" data="3">&nsbp;</div>
     </div>
 
     <span><span class="turn">*</span>Player 2</span>
@@ -82,8 +82,16 @@
     for(var i=0; i<cells.length;++i){
       cells[i].onclick = function ColorThisCell(event){
 
+          console.log(i);
+
           if(event){
+            var currentColor = event.target.style.backgroundColor;
+            if(currentColor =='red' || currentColor == 'black'){
+              alert('You cannot click on this cell');
+              return;
+            } 
             event.target.style.backgroundColor = color;
+            checkWinner(event,player);
             if(color == 'red'){
                 color = 'black';
                 player = 2;
@@ -94,20 +102,71 @@
             }
               
             
-            checkWinner();
+            
             changeTurn(player);
           }
         }
     }
 
-    function checkWinner(){
+    function checkHorizontals(event){
 
+      var bg1Color = 0;
+      var bg2Color = 0;
+      var bg3Color = 0;
 
-      var win = checkHorizontals();
-      if(win){
-        alert('player won');
+      var rowElements = event.target.parentElement.children;
+      bg1Color = rowElements[0].style.backgroundColor;
+      bg2Color = rowElements[1].style.backgroundColor;
+      bg3Color = rowElements[2].style.backgroundColor; 
+
+      if(bg1Color == bg2Color && bg2Color == bg3Color){
+        return 1;
       }
-      var win = checkVerticals();
+
+      return 0;
+      
+
+    }
+
+    function checkVerticals(event){
+
+      if(event){
+        var currentPosition = event.target.attributes.data.value;
+        var checkNodes = document.querySelectorAll('div.row div.cell:nth-child('+currentPosition+')');
+
+
+      bg1Color = checkNodes[0].style.backgroundColor;
+      bg2Color = checkNodes[1].style.backgroundColor;
+      bg3Color = checkNodes[2].style.backgroundColor; 
+
+      if(bg1Color == bg2Color && bg2Color == bg3Color){
+        return 1;
+      }
+
+      return 0;
+
+
+
+
+      }
+
+    }
+
+    function checkWinner(event,player){
+      // console.log(player);
+
+      var win = checkHorizontals(event);
+      if(win){
+        alert('player '+player+' won');
+        location.reload();
+
+      }
+      var win = checkVerticals(event);
+      if(win){
+        alert('player '+player+' won');
+        location.reload();
+
+      }
 
 
 
